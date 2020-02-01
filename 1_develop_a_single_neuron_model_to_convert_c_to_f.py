@@ -24,8 +24,6 @@ Original file is located at
 
 # STEP #0: IMPORT LIBRARIES
 """
-
-!pip install tensorflow-gpu==2.0.0.alpha0
 import tensorflow as tf
 import pandas as pd
 import numpy as np
@@ -37,11 +35,11 @@ import matplotlib.pyplot as plt
 # You will need to mount your drive using the following commands:
 # For more information regarding mounting, please check this out: https://stackoverflow.com/questions/46986398/import-data-into-google-colaboratory
 
-from google.colab import drive
-drive.mount('/content/drive')
+#from google.colab import drive
+#drive.mount('/Users/deepakbhilare/Documents/git_projects/g/Celsius-to-Fahrenheit.csv')
 
 # You have to include the full link to the csv file containing your dataset
-Temperature_df = pd.read_csv('/content/drive/My Drive/Colab Notebooks/Celsius to Fahrenheit.csv')
+Temperature_df = pd.read_csv('/Users/deepakbhilare/Documents/git_projects/g/Celsius-to-Fahrenheit.csv')
 Temperature_df.reset_index(drop=True, inplace=True)
 
 Temperature_df
@@ -76,7 +74,7 @@ model.summary()
 
 model.compile(optimizer=tf.keras.optimizers.Adam(0.5), loss='mean_squared_error')
 
-epochs_hist = model.fit(X_train, y_train, epochs = 100)
+epochs_hist = model.fit(X_train, y_train, epochs = 500)
 
 """# STEP#5: EVALUATING THE MODEL"""
 
@@ -92,7 +90,7 @@ model.get_weights()
 
 # Use the trained model to perform predictions
 
-Temp_C = 0
+Temp_C = 40
 Temp_F = model.predict([Temp_C])
 print('Temperature in degF Using Trained ANN =', Temp_F)
 
